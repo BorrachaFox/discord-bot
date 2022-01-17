@@ -32,7 +32,8 @@ client.on("message", async msg => {
     try {
         client.commands.get(command).execute(client, msg, args);
     } catch(e) {
-        return msg.reply('Ops! eu não conheço este comando')
+        console.log(e)
+        return msg.reply('Ops! eu não conheço este comando').then(msg => { setTimeout(() => msg.delete(), 10000)})
     }
 })
 
